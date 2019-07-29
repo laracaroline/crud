@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, ListGroup, Button, Form, Accordion, Card } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Button, Form, Accordion} from 'react-bootstrap';
 import axios from 'axios';
 
 export default class ListaTarefa extends React.Component{
@@ -16,7 +16,7 @@ export default class ListaTarefa extends React.Component{
     }
 
     listar(){
-        axios.get('https://enigmatic-scrubland-21960.herokuapp.com/todolists')
+        axios.get('http://localhost:3002/listar')
         .then(res => {
             const tarefas = res.data;
             this.setState({tarefas});
@@ -24,7 +24,7 @@ export default class ListaTarefa extends React.Component{
     }
 
     remover(id){
-        axios.delete('https://enigmatic-scrubland-21960.herokuapp.com/todolists/'+id)
+        axios.delete('http://localhost:3002/delete/'+id)
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -57,22 +57,22 @@ export default class ListaTarefa extends React.Component{
                         <Accordion>
                             <ListGroup.Item style={{display: 'flex', justifyContent: 'space-between'}}> 
                             <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                <h5>{tarefa.nome}</h5>
+                                <h5>{tarefa.nome_atividade}</h5>
                             </Accordion.Toggle>
                                 <span>
-                                <Button variant="primary" type="submit" onClick={e => this.editar(e, tarefa.id)}>
+                                <Button variant="primary" type="submit" onClick={e => this.editar(e, tarefa.id_atividade)}>
                                     Editar
                                 </Button>
-                                <Button variant="danger" type="submit" onClick={e => this.remover(tarefa.id)} style={{marginLeft: 15}}>
+                                <Button variant="danger" type="submit" onClick={e => this.remover(tarefa.id_atividade)} style={{marginLeft: 15}}>
                                     Excluir
                                 </Button>
                                 </span>
                             </ListGroup.Item>
                             <Accordion.Collapse eventKey="0">
                                <ListGroup.Item style={{backgroundColor: '#F7F5FE'}}> 
-                                Descrição: {tarefa.descricao} <br/>
-                                Data Início: {(tarefa.dataInicio).split("-").reverse().join("/")} <br/>
-                                Data Final: {(tarefa.dataFinal).split("-").reverse().join("/")} 
+                                Descrição: {tarefa.descricao_atividade} <br/>
+                                Data Início: {(tarefa.data_inicio).split("T")[0].split("-").reverse().join("/")} <br/>
+                                Data Final: {(tarefa.data_final).split("T")[0].split("-").reverse().join("/")} 
                                 </ListGroup.Item>
                             </Accordion.Collapse>
                         </Accordion>

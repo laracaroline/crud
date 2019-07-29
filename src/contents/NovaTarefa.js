@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import ListaTarefa from './ListaTarefa';
 
 export default class NovaTarefa extends React.Component{
     constructor(props) {
