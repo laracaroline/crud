@@ -42,9 +42,9 @@ export default class Pagina extends React.Component{
       });
     }
 
-    Editar(_id, _nome, _descricao, _dataInicio, _dataFinal){
+    Editar(id_atividade, nome_atividade, descricao_atividade, data_inicio, data_final){
       this.setState({
-        pagina: <NovaTarefa irLista={this.Listar.bind(this)} id = {_id} nome = {_nome} descricao={_descricao} dataInicio={_dataInicio} dataFinal={_dataFinal}/>
+        pagina: <NovaTarefa irLista={this.Listar.bind(this)} id = {id_atividade} nome = {nome_atividade} descricao={descricao_atividade} dataInicio={data_inicio} dataFinal={data_final}/>
     });
     }
 

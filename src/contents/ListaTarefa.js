@@ -35,10 +35,12 @@ export default class ListaTarefa extends React.Component{
     
     editar(e, id){
         e.preventDefault();
-        axios.get('https://enigmatic-scrubland-21960.herokuapp.com/todolists/' + id)
+        axios.get('http://localhost:3002/atividade/' + id)
             .then(response => {
-                const tarefa = response.data;
-                this.props.irEditar(tarefa.id, tarefa.nome, tarefa.descricao, tarefa.dataInicio, tarefa.dataFinal);
+                const tarefa = response.data[0];
+                const dataInicioFormat = tarefa.data_inicio.split("T")[0];
+                const dataFimFormat = tarefa.data_final.split("T")[0];
+                this.props.irEditar(tarefa.id_atividade, tarefa.nome_atividade, tarefa.descricao_atividade, dataInicioFormat, dataFimFormat);
                 console.log(response.data);
                 console.log(response.status);
         })

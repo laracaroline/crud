@@ -65,7 +65,7 @@ export default class NovaTarefa extends React.Component{
             if(Date.parse(obj.dataFinal) < Date.parse(obj.dataInicio)){
               alert('Data final inválida');
             }else{
-              axios.post('https://enigmatic-scrubland-21960.herokuapp.com/todolists', obj)
+              axios.post('http://localhost:3002/inserir', obj)
                   .then(response => {
                     this.resp = response;
                     alert('Tarefa Inserida');
@@ -94,7 +94,7 @@ export default class NovaTarefa extends React.Component{
           if(Date.parse(obj.dataFinal) < Date.parse(obj.dataInicio)){
             alert('Data final inválida');
           }else{
-            axios.put('https://enigmatic-scrubland-21960.herokuapp.com/todolists/'+ id, obj)
+            axios.put('http://localhost:3002/editar/'+ id, obj)
                 .then(response => {
                   this.resp = response;
                   alert('Edição concluída!')
